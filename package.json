@@ -5,9 +5,9 @@
 	"main": "format-package-json-file.js",
 	"scripts": {
 		"test": "node ./format-package-json-file.test.js",
-		"clean": "rm -Rfv ./node_modules || true && npm cache clean --force",
-		"reset": "npm run clean && rm ./format-package-json-file.js || true",
-		"bundle": "npx parcel build ./*.module.js ./*.constant.js --no-cache --no-source-maps --no-minify --target node --bundle-node-modules --out-dir ./ --out-file ./format-package-json-file.js --global formatPackageJSONFile",
+		"clean": "rm -rf ./node_modules || true && npm cache clean --force",
+		"reset": "npm run clean && rm -rfv ./format-package-json-file.js || true && rm -rfv ./.build || true",
+		"bundle": "npx parcel build ./*.module.js --no-cache --no-source-maps --no-minify --target node --bundle-node-modules --out-dir ./.build --out-file ./format-package-json-file.js --global formatPackageJSONFile && mv ./.build/format-package-json-file.js ./format-package-json-file.js && rm -rfv ./.build || true",
 		"compress": "npx terser ./format-package-json-file.js --compress --comments all --output ./format-package-json-file.js",
 		"build": "npm run bundle && npm run compress",
 		"deploy": "npm run reset && npm install && npm run build && npm test && npm run clean",
@@ -38,9 +38,7 @@
 		"format-json-file": "npm:@volkovasystem/format-json-file@0.0.2"
 	},
 	"devDependencies": {
-		"@babel/cli": "npm:@volkovasystem/babel-cli@7.8.5",
-		"@babel/core": "npm:@volkovasystem/babel-core@7.9.7",
-		"@babel/plugin-transform-modules-umd": "npm:@volkovasystem/babel-plugin-transform-modules-umd@7.9.1",
-		"terser": "npm:@volkovasystem/terser@4.6.13"
+		"terser": "npm:@volkovasystem/terser@4.6.13",
+		"parcel": "npm:@volkovasystem/parcel-bundler@1.12.4"
 	}
 }
