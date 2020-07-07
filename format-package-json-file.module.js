@@ -9,9 +9,9 @@
 		@copyright:
 			Richeve S. Bebedor
 			<
-				@year-range:
+				@license-year-range:
 					2020-present
-				@end-year-range
+				@end-license-year-range
 			>
 			<
 				@contact-detail:
@@ -46,18 +46,21 @@ const util = require( "util" );
 
 const formatJSONFile = require( "format-json-file" );
 
-const fsAsync = fs.promises;
+const fsAsync = (
+	fs
+	.promises
+);
 
 const PACKAGE_JSON_FILE_NAME = (
 	"package.json"
 );
 
-const PACKAGE_PROPERTY_LIST = (
+const DEFAULT_PACKAGE_PROPERTY_LIST = (
 	require( "./package-property-list.constant.js" )
 );
 
 const formatPackageJSONFile = (
-	async	function formatPackageJSONFile( moduleDirectoryPath ){
+	async	function formatPackageJSONFile( moduleDirectoryPath, option ){
 				/*;
 					@procedure-definition:
 						Reformat package JSON file to specific convention.
@@ -73,6 +76,18 @@ const formatPackageJSONFile = (
 
 									<@required;>
 								]
+							",
+
+							"option": "
+								[
+									@type:
+											object with {
+												"propertyList": "[@type:object as Array;]"
+											}
+									@end-type
+
+									<@optional;>
+								]
 							"
 						}
 					@end-parameter-definition
@@ -85,9 +100,9 @@ const formatPackageJSONFile = (
 											object as Error
 									@end-type
 
-									<@tag: invalid-module-directory-path;>
-									<@tag: cannot-find-package-json-file;>
-									<@tag: cannot-format-package-json-file;>
+									<@tag:invalid-module-directory-path;>
+									<@tag:cannot-find-package-json-file;>
+									<@tag:cannot-format-package-json-file;>
 								]
 							"
 						}
@@ -124,19 +139,58 @@ const formatPackageJSONFile = (
 									(
 										await	fsAsync
 												.stat(
-													moduleDirectoryPath
+													(
+														moduleDirectoryPath
+													)
 												)
 									)
 									.isDirectory( )
 								===	true
 							)
 					){
+						option = (
+								(
+									option
+								)
+
+							||	(
+									{ }
+								)
+						);
+
 						const packageJSONFilePath = (
 							path
 							.resolve(
-								moduleDirectoryPath,
-								PACKAGE_JSON_FILE_NAME
+								(
+									moduleDirectoryPath
+								),
+
+								(
+									PACKAGE_JSON_FILE_NAME
+								)
 							)
+						);
+
+						const PACKAGE_PROPERTY_LIST = (
+								(
+										(
+												Array
+												.isArray(
+													(
+														option
+														.propertyList
+													)
+												)
+											===	true
+										)
+								)
+							?	(
+									option
+									.propertyList
+								)
+							:	(
+									DEFAULT_PACKAGE_PROPERTY_LIST
+								)
 						);
 
 						if(
@@ -144,7 +198,9 @@ const formatPackageJSONFile = (
 										(
 											await	fsAsync
 													.stat(
-														packageJSONFilePath
+														(
+															packageJSONFilePath
+														)
 													)
 										)
 										.isFile( )
@@ -159,8 +215,13 @@ const formatPackageJSONFile = (
 
 													(
 														{
-															"sortProperty": true,
-															"propertyList": PACKAGE_PROPERTY_LIST
+															"sortProperty": (
+																true
+															),
+
+															"propertyList": (
+																PACKAGE_PROPERTY_LIST
+															)
 														}
 													)
 												)
@@ -169,14 +230,17 @@ const formatPackageJSONFile = (
 						else{
 							throw	(
 										new	Error(
-												[
-													"#cannot-find-package-json-file;",
+												(
+													[
+														"#cannot-find-package-json-file;",
 
-													"cannot format package json file",
-													"cannot find package json file",
+														"cannot format package json file;",
+														"cannot find package json file;",
 
-													`@package-json-file-path: ${ packageJSONFilePath };`
-												]
+														"@package-json-file-path:",
+														`${ packageJSONFilePath };`
+													]
+												)
 											)
 									);
 						}
@@ -184,14 +248,17 @@ const formatPackageJSONFile = (
 					else{
 						throw	(
 									new	Error(
-											[
-												"#invalid-module-directory-path;",
+											(
+												[
+													"#invalid-module-directory-path;",
 
-												"cannot format package json file",
-												"invalid module directory path",
+													"cannot format package json file;",
+													"invalid module directory path;",
 
-												`@module-directory-path: ${ moduleDirectoryPath };`
-											]
+													"@module-directory-path:",
+													`${ moduleDirectoryPath };`
+												]
+											)
 										)
 								);
 					}
@@ -199,13 +266,17 @@ const formatPackageJSONFile = (
 				catch( error ){
 					throw	(
 								new	Error(
-										[
-											"#cannot-format-package-json-file;",
+										(
+											[
+												"#cannot-format-package-json-file;",
 
-											"cannot execute format package json file",
+												"cannot format package json file;",
+												"cannot execute format package json file;",
 
-											`@error-data: ${ util.inspect( error ) };`
-										]
+												"@error-data:",
+												`${ util.inspect( error ) };`
+											]
+										)
 									)
 							);
 				}
