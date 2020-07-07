@@ -17,15 +17,23 @@ const MODULE_DIRECTORY_PATH_SHELL_PARAMETER = (
 										(
 											shellParameterList[
 												(
+													(
 														shellParameterList
 														.indexOf(
-															MODULE_DIRECTORY_PATH_SHELL_PARAMETER
+															(
+																MODULE_DIRECTORY_PATH_SHELL_PARAMETER
+															)
 														)
-													+	1
+													)++
 												)
 											]
 										)
 									)
 						);
 			}
-)( process.argv );
+)(
+	(
+		process
+		.argv
+	)
+);
