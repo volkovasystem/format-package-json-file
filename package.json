@@ -1,6 +1,6 @@
 {
 	"name": "@volkovasystem/format-package-json-file",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Reformat package JSON file to specific convention.",
 	"main": "format-package-json-file.js",
 	"scripts": {
@@ -38,7 +38,7 @@
 	},
 	"homepage": "https://github.com/volkovasystem/format-package-json-file#readme",
 	"dependencies": {
-		"format-json-file": "npm:@volkovasystem/format-json-file@0.0.3"
+		"format-json-file": "npm:@volkovasystem/format-json-file@0.0.4"
 	},
 	"devDependencies": {
 		"terser": "npm:@volkovasystem/terser@4.6.13",
