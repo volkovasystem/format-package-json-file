@@ -12,21 +12,41 @@ const MODULE_DIRECTORY_PATH_SHELL_PARAMETER = (
 					require( "./format-package-json-file.js" )
 				);
 
+				const moduleDirectoryPath = (
+						(
+								(
+										shellParameterList
+										.includes(
+											(
+												MODULE_DIRECTORY_PATH_SHELL_PARAMETER
+											)
+										)
+									===	true
+								)
+						)
+					?	(
+							shellParameterList[
+								(
+									(
+										shellParameterList
+										.indexOf(
+											(
+												MODULE_DIRECTORY_PATH_SHELL_PARAMETER
+											)
+										)
+									)+1
+								)
+							]
+						)
+					:	(
+							undefined
+						)
+				);
+
 				return	(
 							await	formatPackageJSONFile(
 										(
-											shellParameterList[
-												(
-													(
-														shellParameterList
-														.indexOf(
-															(
-																MODULE_DIRECTORY_PATH_SHELL_PARAMETER
-															)
-														)
-													)++
-												)
-											]
+											moduleDirectoryPath
 										)
 									)
 						);
