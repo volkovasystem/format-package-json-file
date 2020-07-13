@@ -58,7 +58,10 @@ const TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST = (
 	async	function TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST( ){
 				const fs = require( "fs" );
 
-				const fsAsync = fs.promises;
+				const fsAsync = (
+					fs
+					.promises
+				);
 
 				const DEFAULT_PACKAGE_PROPERTY_LIST = (
 					require( "./package-property-list.constant.js" )
