@@ -1,0 +1,4 @@
+.editorconfig
+*.module.js
+*.constant.js
+*.test.js
