@@ -39,7 +39,8 @@ const MODULE_DIRECTORY_PATH_SHELL_PARAMETER = (
 							]
 						)
 					:	(
-							undefined
+							process
+							.cwd( )
 						)
 				);
 
