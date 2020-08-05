@@ -9,11 +9,13 @@
 
 		@copyright:
 			Richeve S. Bebedor
+
 			<
 				@license-year-range:
 					2020-present
 				@end-license-year-range
 			>
+
 			<
 				@contact-detail:
 					richeve.bebedor@gmail.com
@@ -93,6 +95,18 @@ const formatPackageJSONFile = (
 						}
 					@end-parameter-definition
 
+					@result-definition:
+						{
+							"result": "
+								[
+									@type:
+											boolean
+									@end-type
+								]
+							"
+						}
+					@end-result-definition
+
 					@trigger-definition:
 						{
 							"trigger": "
@@ -108,18 +122,6 @@ const formatPackageJSONFile = (
 							"
 						}
 					@end-trigger-definition
-
-					@result-definition:
-						{
-							"result": "
-								[
-									@type:
-											boolean
-									@end-type
-								]
-							"
-						}
-					@end-result-definition
 				*/
 
 				try{

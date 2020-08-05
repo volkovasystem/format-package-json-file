@@ -2,7 +2,10 @@
 
 const assert = require( "assert" );
 
-const strictAssert = assert.strict;
+const strictAssert = (
+	assert
+	.strict
+);
 
 const formatPackageJSONFile = (
 	require( "./format-package-json-file.js" )
@@ -11,6 +14,10 @@ const formatPackageJSONFile = (
 const TEST_MODULE_DIRECTORY = (
 	async	function TEST_MODULE_DIRECTORY( ){
 				try{
+					const testValue = (
+						true
+					);
+
 					strictAssert
 					.equal(
 						(
@@ -22,7 +29,7 @@ const TEST_MODULE_DIRECTORY = (
 						),
 
 						(
-							true
+							testValue
 						),
 
 						(
@@ -30,7 +37,7 @@ const TEST_MODULE_DIRECTORY = (
 								"#test-module-directory;",
 
 								"test module directory;",
-								"must return true;"
+								`must return ${ testValue };`
 							]
 						)
 					);
@@ -56,18 +63,23 @@ const TEST_MODULE_DIRECTORY = (
 
 const TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST = (
 	async	function TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST( ){
-				const fs = require( "fs" );
-
-				const fsAsync = (
-					fs
-					.promises
-				);
-
-				const DEFAULT_PACKAGE_PROPERTY_LIST = (
-					require( "./package-property-list.constant.js" )
-				);
-
 				try{
+					const fs = require( "fs" );
+
+					const fsAsync = (
+						fs
+						.promises
+					);
+
+					const DEFAULT_PACKAGE_PROPERTY_LIST = (
+						require( "./package-property-list.constant.js" )
+					);
+
+					const testValue = (
+						DEFAULT_PACKAGE_PROPERTY_LIST
+						.toString( )
+					);
+
 					strictAssert
 					.equal(
 						(
@@ -91,8 +103,7 @@ const TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST = (
 						),
 
 						(
-							DEFAULT_PACKAGE_PROPERTY_LIST
-							.toString( )
+							testValue
 						),
 
 						(
@@ -100,7 +111,7 @@ const TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST = (
 								"#test-package-json-file-and-default-package-property-list;",
 
 								"test package json file and default package property list;",
-								"must be equal;"
+								`must be equal to ${ testValue };`
 							]
 						)
 					);
@@ -128,27 +139,29 @@ const TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST = (
 	async	function TEST_SCENE_BASIC( ){
 				console
 				.table(
-					[
-						{
-							"test": (
-								"test module directory"
-							),
+					(
+						[
+							{
+								"test": (
+									"test module directory"
+								),
 
-							"result": (
-								await	TEST_MODULE_DIRECTORY( )
-							)
-						},
+								"result": (
+									await	TEST_MODULE_DIRECTORY( )
+								)
+							},
 
-						{
-							"test": (
-								"test package json file and default package property list"
-							),
+							{
+								"test": (
+									"test package json file and default package property list"
+								),
 
-							"result": (
-								await	TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST( )
-							)
-						}
-					]
+								"result": (
+									await	TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST( )
+								)
+							}
+						]
+					)
 				);
 			}
 )( );

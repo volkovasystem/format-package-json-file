@@ -18,8 +18,7 @@ const PACKAGE_PROPERTY_LIST = (
 				"license",
 				"bugs",
 				"homepage",
-				"dependencies",
-				"devDependencies"
+				"dependencies"
 			]
 		)
 	)
