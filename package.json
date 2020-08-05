@@ -1,12 +1,12 @@
 {
 	"name": "@volkovasystem/format-package-json-file",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Reformat package JSON file to specific convention.",
 	"main": "format-package-json-file.js",
 	"scripts": {
 		"clean": "rm -rfv ./node_modules || true && rm -fv ./package-lock.json || true && npm cache clean --force",
 		"reset": "npm run clean && rm -rfv ./format-package-json-file.js || true && rm -rfv ./.build || true",
-		"bundle": "npx parcel build ./*.module.js --no-cache --no-source-maps --no-minify --target node --bundle-node-modules --out-dir ./.build --out-file ./format-package-json-file.js --global formatPackageJSONFile && mv ./.build/format-package-json-file.js ./format-package-json-file.js && rm -rfv ./.build || true",
+		"bundle": "npx parcel build ./*.module.js --no-cache --no-source-maps --no-minify --target node --out-dir ./.build --out-file ./format-package-json-file.js --global formatPackageJSONFile && mv ./.build/format-package-json-file.js ./format-package-json-file.js && rm -rfv ./.build || true",
 		"compress": "npx terser ./format-package-json-file.js --compress --output ./format-package-json-file.js",
 		"build": "npm run bundle && npm run compress",
 		"test": "node ./format-package-json-file.test.js",
@@ -38,6 +38,6 @@
 	},
 	"homepage": "https://github.com/volkovasystem/format-package-json-file#readme",
 	"dependencies": {
-		"format-json-file": "npm:@volkovasystem/format-json-file@0.0.7"
+		"format-json-file": "npm:@volkovasystem/format-json-file@0.0.8"
 	}
 }
