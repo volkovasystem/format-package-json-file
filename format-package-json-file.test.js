@@ -75,31 +75,55 @@ const TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST = (
 						require( "./package-property-list.constant.js" )
 					);
 
+					const actualPropertyList = (
+						Object
+						.keys(
+							(
+								JSON
+								.parse(
+									(
+										await	fsAsync
+												.readFile(
+													(
+														"./package.json"
+													)
+												)
+									)
+								)
+							)
+						)
+					)
+
+					const testPropertyList = (
+						Array
+						.from(
+							(
+								DEFAULT_PACKAGE_PROPERTY_LIST
+							)
+						)
+					);
+
 					const testValue = (
-						DEFAULT_PACKAGE_PROPERTY_LIST
-						.toString( )
+						true
 					);
 
 					strictAssert
 					.equal(
 						(
-							Object
-							.keys(
-								(
-									JSON
-									.parse(
-										(
-											await	fsAsync
-													.readFile(
-														(
-															"./package.json"
-														)
-													)
+								testPropertyList
+								.every(
+									(
+										( property ) => (
+											actualPropertyList
+											.includes(
+												(
+													property
+												)
+											)
 										)
 									)
 								)
-							)
-							.toString( )
+							===	true
 						),
 
 						(
@@ -111,7 +135,8 @@ const TEST_PACKAGE_JSON_FILE_AND_DEFAULT_PACKAGE_PROPERTY_LIST = (
 								"#test-package-json-file-and-default-package-property-list;",
 
 								"test package json file and default package property list;",
-								`must be equal to ${ testValue };`
+								`package json file must contain default package property list, ${ DEFAULT_PACKAGE_PROPERTY_LIST };`,
+								`must assert to ${ testValue };`
 							]
 						)
 					);
