@@ -10,15 +10,13 @@ const PACKAGE_PROPERTY_LIST = (
 				"description",
 				"main",
 				"scripts",
-				"bin",
 				"repository",
 				"keywords",
 				"author",
 				"contributors",
 				"license",
 				"bugs",
-				"homepage",
-				"dependencies"
+				"homepage"
 			]
 		)
 	)
