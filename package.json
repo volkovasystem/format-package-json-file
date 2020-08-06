@@ -1,6 +1,6 @@
 {
 	"name": "@volkovasystem/format-package-json-file",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "Reformat package JSON file to specific convention.",
 	"main": "format-package-json-file.js",
 	"scripts": {
