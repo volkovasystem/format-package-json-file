@@ -174,28 +174,6 @@ const formatPackageJSONFile = (
 							)
 						);
 
-						const PACKAGE_PROPERTY_LIST = (
-								(
-										(
-												Array
-												.isArray(
-													(
-														option
-														.propertyList
-													)
-												)
-											===	true
-										)
-								)
-							?	(
-									option
-									.propertyList
-								)
-							:	(
-									DEFAULT_PACKAGE_PROPERTY_LIST
-								)
-						);
-
 						if(
 								(
 										(
@@ -210,6 +188,80 @@ const formatPackageJSONFile = (
 									===	true
 								)
 						){
+							const packageData = (
+								JSON
+								.parse(
+									(
+										await	fsAsync
+												.readFile(
+													(
+														packageJSONFilePath
+													)
+												)
+									)
+								)
+							);
+
+							const currentPackagePropertyList = (
+								Object
+								.keys(
+									(
+										packageData
+									)
+								)
+							);
+
+							const PACKAGE_PROPERTY_LIST = (
+									(
+											(
+													Array
+													.isArray(
+														(
+															option
+															.propertyList
+														)
+													)
+												===	true
+											)
+										&&	(
+													(
+														option
+														.propertyList
+													)
+													.length
+												>	0
+											)
+									)
+								?	(
+										option
+										.propertyList
+									)
+								:	(
+											(
+													(
+															Array
+															.isArray(
+																(
+																	currentPackagePropertyList
+																)
+															)
+														===	true
+													)
+												&&	(
+															currentPackagePropertyList
+															.length
+														>	0
+													)
+											)
+										?	(
+												currentPackagePropertyList
+											)
+										:	(
+												DEFAULT_PACKAGE_PROPERTY_LIST
+											)
+									)
+							);
+
 							return	(
 										await	formatJSONFile(
 													(
