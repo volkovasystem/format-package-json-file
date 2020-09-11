@@ -1,0 +1,313 @@
+{
+	"module": [
+		{
+			"title": "Format Package JSON File",
+			"description": [
+				"Reformat package JSON file to specific convention."
+			],
+			"namespace": "format-package-json-file",
+			"alias": "",
+			"property": [
+				"formatPackageJSONFile"
+			],
+			"type": [
+				"procedure"
+			],
+			"format": [
+				"formatPackageJSONFile( moduleDirectoryPath, optionData );"
+			],
+			"sample": [
+				"await formatPackageJSONFile( './' );"
+			],
+
+			"parameter": [
+				{
+					"title": "Module Directory Path",
+					"description": [
+						"Set the directory path of package JSON file."
+					],
+					"namespace": "module-directory-path",
+					"alias": "",
+					"property": [
+						"moduleDirectoryPath"
+					],
+					"type": [
+						"string"
+					],
+					"format": [
+						"formatPackageJSONFile( moduleDirectoryPath );"
+					],
+					"sample": [
+						"await formatPackageJSONFile( './' );"
+					],
+					"required": true
+				},
+
+				{
+					"title": "Option Data",
+					"description": [
+						"Extended parameter for this procedure."
+					],
+					"namespace": "option-data",
+					"alias": "",
+					"property": [
+						"optionData"
+					],
+					"type": [
+						"object:with:[propertyList]"
+					],
+					"format": [
+						"formatPackageJSONFile( moduleDirectoryPath, optionData );"
+					],
+					"sample": [
+						"await formatPackageJSONFile( './', { 'propertyList': [ 'name', 'alias' ] } );"
+					],
+					"optional": true
+				},
+
+				{
+					"title": "Property List",
+					"description": [
+						"Override default package property sorting procedure."
+					],
+					"namespace": "option-data:property-list",
+					"alias": "",
+					"property": [
+						"optionData.propertyList"
+					],
+					"type": [
+						"object:as:Array:of:string"
+					],
+					"format": [
+						"formatPackageJSONFile( moduleDirectoryPath, { 'propertyList': [ ] } );"
+					],
+					"sample": [
+						"await formatPackageJSONFile( './', { 'propertyList': [ 'name', 'version', 'description' ] } );"
+					],
+					"optional": true
+				}
+			],
+
+			"result": [
+				{
+					"title": "Result",
+					"description": [
+						"Result of format package JSON file procedure."
+					],
+					"namespace": "result",
+					"alias": "",
+					"property": [
+						"result"
+					],
+					"type": [
+						"boolean"
+					],
+					"format": [ ],
+					"sample": [ ],
+				}
+			],
+
+			"trigger": [
+				{
+					"title": "Trigger",
+					"description": [
+						"Trigger of format package JSON file procedure."
+					],
+					"namespace": "trigger",
+					"alias": "",
+					"property": [
+						"trigger"
+					],
+					"type": [
+						"object:as:Error"
+					],
+					"format": [ ],
+					"sample": [ ],
+					"tag": [
+						"invalid-module-directory-path",
+						"cannot-find-package-json-file",
+						"cannot-format-package-json-file"
+					]
+				}
+			]
+		},
+		{
+			"title": "Format Package JSON File",
+			"description": [
+				"Reformat package JSON file to specific convention."
+			],
+			"namespace": "format-package-json-file",
+			"alias": "fpjf",
+			"type": [
+				"shell"
+			],
+			"format": [
+				"format-package-json-file",
+				"format-package-json-file --moduleDirectoryPath <moduleDirectoryPath>"
+			],
+			"sample": [
+				"format-package-json-file",
+				"format-package-json-file --moduleDirectoryPath ./"
+			],
+
+			"parameter": [
+				{
+					"title": "Version",
+					"description": [
+						"Show module version."
+					],
+					"namespace": "version",
+					"alias": "v",
+					"property": [
+						"versionStatus"
+					],
+					"type": [
+						"boolean"
+					],
+					"format": [
+						"--version",
+						"--v"
+					],
+					"sample": [
+						"format-package-json-file --version"
+					]
+				},
+
+				{
+					"title": "Help",
+					"description": [
+						"Show help module."
+					],
+					"namespace": "help",
+					"alias": "h",
+					"property": [
+						"helpStatus",
+						"helpShellParameter"
+					],
+					"type": [
+						"boolean",
+						"string"
+					],
+					"format": [
+						"--help [helpShellParameter]",
+						"--h [helpShellParameter]"
+					],
+					"sample": [
+						"format-package-json-file --help",
+						"format-package-json-file --help filePath"
+					]
+				},
+
+				{
+					"title": "Install Module",
+					"description": [
+						"Install format-package-json-file module to global."
+					],
+					"namespace": "installModule",
+					"alias": "im",
+					"property": [
+						"installModuleStatus"
+					],
+					"type": [
+						"boolean"
+					],
+					"format": [
+						"--installModule",
+						"--im"
+					],
+					"sample": [
+						"format-package-json-file --installModule"
+					]
+				},
+
+				{
+					"title": "Link Module",
+					"description": [
+						"Link format-package-json-file module to global."
+					],
+					"namespace": "linkModule",
+					"alias": "lm",
+					"property": [
+						"linkModuleStatus"
+					],
+					"type": [
+						"boolean"
+					],
+					"format": [
+						"--linkModule",
+						"--lm"
+					],
+					"sample": [
+						"format-package-json-file --installModule --linkModule"
+					]
+				},
+
+				{
+					"title": "Uninstall Module",
+					"description": [
+						"Uninstall format-package-json-file module from global."
+					],
+					"namespace": "uninstallModule",
+					"alias": "um",
+					"property": [
+						"uninstallModuleStatus"
+					],
+					"type": [
+						"boolean"
+					],
+					"format": [
+						"--uninstallModule",
+						"--um"
+					],
+					"sample": [
+						"format-package-json-file --uninstallModule"
+					]
+				},
+
+				{
+					"title": "Module Directory Path",
+					"description": [
+						"Set the file path to JSON file."
+					],
+					"namespace": "moduleDirectoryPath",
+					"alias": "mdp",
+					"property": [
+						"moduleDirectoryPath"
+					],
+					"type": [
+						"string"
+					],
+					"format": [
+						"--moduleDirectoryPath <moduleDirectoryPath>",
+						"--mdp <moduleDirectoryPath>"
+					],
+					"sample": [
+						"format-package-json-file --moduleDirectoryPath ./"
+					]
+				},
+
+				{
+					"title": "Property List",
+					"description": [
+						"Override default package property sorting procedure."
+					],
+					"namespace": "propertyList",
+					"alias": "pl",
+					"property": [
+						"propertyList"
+					],
+					"type": [
+						"object:as:Array:of:string"
+					],
+					"format": [
+						"--propertyList <propertyList>",
+						"--pl <propertyList>"
+					],
+					"sample": [
+						"format-package-json-file --moduleDirectoryPath ./ --propertyList name,version,description"
+					]
+				}
+			]
+		}
+	]
+}
