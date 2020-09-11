@@ -1,6 +1,7 @@
 {
 	"name": "@volkovasystem/format-package-json-file",
-	"version": "0.0.8",
+	"alias": "format-package-json-file",
+	"version": "0.0.9",
 	"description": "Reformat package JSON file to specific convention.",
 	"main": "format-package-json-file.js",
 	"scripts": {
@@ -12,10 +13,12 @@
 		"test": "node ./format-package-json-file.test.js",
 		"stage": "npm run reset && npm install && npm run build && npm test && npm run clean",
 		"prepublishOnly": "npm run stage",
-		"format-package-json-file": "node ./format-package-json-file.run.js"
+		"format-package-json-file": "node ./format-package-json-file.run.js",
+		"fpjf": "node ./format-package-json-file.run.js"
 	},
 	"bin": {
-		"format-package-json-file": "format-package-json-file.run.js"
+		"format-package-json-file": "format-package-json-file.run.js",
+		"fpjf": "format-package-json-file.run.js"
 	},
 	"repository": {
 		"type": "git",
@@ -38,6 +41,6 @@
 	},
 	"homepage": "https://github.com/volkovasystem/format-package-json-file#readme",
 	"dependencies": {
-		"format-json-file": "npm:@volkovasystem/format-json-file@0.0.8"
+		"format-json-file": "npm:@volkovasystem/format-json-file@0.0.15"
 	}
 }
