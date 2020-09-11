@@ -6,6 +6,7 @@ const PACKAGE_PROPERTY_LIST = (
 		(
 			[
 				"name",
+				"alias",
 				"version",
 				"description",
 				"main",
