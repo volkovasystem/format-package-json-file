@@ -1,27 +1,18 @@
 "use strict";
 
 /*;
-	@license;
-	@module-license:
+	@license:module:
 		MIT License
 
 		Copyright (c) 2020-present Richeve S. Bebedor <richeve.bebedor@gmail.com>
 
-		@copyright:
+		@license:copyright:
 			Richeve S. Bebedor
 
-			<
-				@license-year-range:
-					2020-present
-				@end-license-year-range
-			>
+			<@license:year-range:2020-present;>
 
-			<
-				@contact-detail:
-					richeve.bebedor@gmail.com
-				@end-contact-detail
-			>
-		@end-copyright
+			<@license:contact-detail:richeve.bebedor@gmail.com;>
+		@license:copyright;
 
 		Permission is hereby granted, free of charge, to any person obtaining a copy
 		of this software and associated documentation files (the "Software"), to deal
@@ -40,89 +31,96 @@
 		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 		SOFTWARE.
-	@end-module-license
+	@license:module;
 */
 
-const fs = require( "fs" );
-const path = require( "path" );
-const util = require( "util" );
-
-const formatJSONFile = require( "format-json-file" );
-
-const fsAsync = (
-	fs
-	.promises
-);
-
-const PACKAGE_JSON_FILE_NAME = (
-	"package.json"
-);
-
-const DEFAULT_PACKAGE_PROPERTY_LIST = (
-	require( "./package-property-list.constant.js" )
-);
-
 const formatPackageJSONFile = (
-	async	function formatPackageJSONFile( moduleDirectoryPath, option ){
+	async	function formatPackageJSONFile( moduleDirectoryPath, optionData ){
 				/*;
-					@procedure-definition:
-						Reformat package JSON file to specific convention.
-					@end-procedure-definition
+					@definition:
+						@procedure:#formatPackageJSONFile
+							@description:
+								Reformat package JSON file to specific convention.
+							@description;
+						@procedure;
 
-					@parameter-definition:
-						{
-							"moduleDirectoryPath": "
-								[
-									@type:
-											string
-									@end-type
+						@parameter:#moduleDirectoryPath
+							@type:
+									string
+							@type;
 
-									<@required;>
-								]
-							",
+							@description:
+							@description;
 
-							"option": "
-								[
-									@type:
-											object with {
-												"propertyList": "[@type:object as Array;]"
-											}
-									@end-type
+							@required;
+						@parameter;
 
-									<@optional;>
-								]
-							"
-						}
-					@end-parameter-definition
+						@parameter:#optionData
+							@type:
+									object:with:[
+										propertyList
+									]
+							@type;
 
-					@result-definition:
-						{
-							"result": "
-								[
-									@type:
-											boolean
-									@end-type
-								]
-							"
-						}
-					@end-result-definition
+							@description:
+							@description;
 
-					@trigger-definition:
-						{
-							"trigger": "
-								[
-									@type:
-											object as Error
-									@end-type
+							@optional;
+						@parameter;
 
-									<@tag:invalid-module-directory-path;>
-									<@tag:cannot-find-package-json-file;>
-									<@tag:cannot-format-package-json-file;>
-								]
-							"
-						}
-					@end-trigger-definition
+						@parameter:#optionData.propertyList
+							@type:
+									object:as:Array:of:string
+							@type;
+
+							@description:
+							@description;
+
+							@optional;
+						@parameter;
+
+						@result:#result
+							@type:
+									boolean
+							@type;
+
+							@description:
+							@description;
+						@result;
+
+						@trigger:#trigger
+							@type:
+									object:as:Error
+							@type;
+
+							@description:
+							@description;
+
+							@tag:#invalid-module-directory-path;
+							@tag:#cannot-find-package-json-file;
+							@tag:#cannot-format-package-json-file;
+						@trigger;
+					@definition;
 				*/
+
+				const fs = require( "fs" );
+				const path = require( "path" );
+				const util = require( "util" );
+
+				const formatJSONFile = require( "format-json-file" );
+
+				const fsAsync = (
+					fs
+					.promises
+				);
+
+				const PACKAGE_JSON_FILE_NAME = (
+					"package.json"
+				);
+
+				const DEFAULT_PACKAGE_PROPERTY_LIST = (
+					require( "./package-property-list.constant.js" )
+				);
 
 				try{
 					if(
@@ -151,13 +149,16 @@ const formatPackageJSONFile = (
 								===	true
 							)
 					){
-						option = (
-								(
-									option
-								)
+						(
+								optionData
+							=	(
+										(
+											optionData
+										)
 
-							||	(
-									{ }
+									||	(
+											{ }
+										)
 								)
 						);
 
@@ -217,15 +218,16 @@ const formatPackageJSONFile = (
 													Array
 													.isArray(
 														(
-															option
+															optionData
 															.propertyList
 														)
 													)
 												===	true
 											)
+
 										&&	(
 													(
-														option
+														optionData
 														.propertyList
 													)
 													.length
@@ -233,7 +235,7 @@ const formatPackageJSONFile = (
 											)
 									)
 								?	(
-										option
+										optionData
 										.propertyList
 									)
 								:	(
@@ -247,6 +249,7 @@ const formatPackageJSONFile = (
 															)
 														===	true
 													)
+
 												&&	(
 															currentPackagePropertyList
 															.length
@@ -326,7 +329,7 @@ const formatPackageJSONFile = (
 												"#cannot-format-package-json-file;",
 
 												"cannot format package json file;",
-												"cannot execute format package json file;",
+												"cannot execute format package json file procedure;",
 
 												"@error-data:",
 												`${ util.inspect( error ) };`
