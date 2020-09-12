@@ -5,6 +5,7 @@
 			"description": [
 				"Reformat package JSON file to specific convention."
 			],
+
 			"namespace": "format-package-json-file",
 			"alias": "",
 			"property": [
@@ -13,6 +14,7 @@
 			"type": [
 				"procedure"
 			],
+
 			"format": [
 				"formatPackageJSONFile( moduleDirectoryPath, optionData );"
 			],
@@ -24,8 +26,9 @@
 				{
 					"title": "Module Directory Path",
 					"description": [
-						"Set the directory path of package JSON file."
+						"Set directory path to package JSON file."
 					],
+
 					"namespace": "module-directory-path",
 					"alias": "",
 					"property": [
@@ -34,20 +37,23 @@
 					"type": [
 						"string"
 					],
+
 					"format": [
 						"formatPackageJSONFile( moduleDirectoryPath );"
 					],
 					"sample": [
 						"await formatPackageJSONFile( './' );"
 					],
+
 					"required": true
 				},
 
 				{
 					"title": "Option Data",
 					"description": [
-						"Extended parameter for this procedure."
+						"Extended procedure parameter."
 					],
+
 					"namespace": "option-data",
 					"alias": "",
 					"property": [
@@ -56,20 +62,23 @@
 					"type": [
 						"object:with:[propertyList]"
 					],
+
 					"format": [
 						"formatPackageJSONFile( moduleDirectoryPath, optionData );"
 					],
 					"sample": [
 						"await formatPackageJSONFile( './', { 'propertyList': [ 'name', 'alias' ] } );"
 					],
+
 					"optional": true
 				},
 
 				{
 					"title": "Property List",
 					"description": [
-						"Override default package property sorting procedure."
+						"Override default package property sort procedure."
 					],
+
 					"namespace": "option-data:property-list",
 					"alias": "",
 					"property": [
@@ -78,12 +87,14 @@
 					"type": [
 						"object:as:Array:of:string"
 					],
+
 					"format": [
 						"formatPackageJSONFile( moduleDirectoryPath, { 'propertyList': [ ] } );"
 					],
 					"sample": [
-						"await formatPackageJSONFile( './', { 'propertyList': [ 'name', 'version', 'description' ] } );"
+						"await formatPackageJSONFile( './', { 'propertyList': [ 'name', 'alias', 'version' ] } );"
 					],
+
 					"optional": true
 				}
 			],
@@ -94,6 +105,7 @@
 					"description": [
 						"Result of format package JSON file procedure."
 					],
+
 					"namespace": "result",
 					"alias": "",
 					"property": [
@@ -102,8 +114,13 @@
 					"type": [
 						"boolean"
 					],
-					"format": [ ],
-					"sample": [ ]
+
+					"format": [
+						""
+					],
+					"sample": [
+						""
+					]
 				}
 			],
 
@@ -113,6 +130,7 @@
 					"description": [
 						"Trigger of format package JSON file procedure."
 					],
+
 					"namespace": "trigger",
 					"alias": "",
 					"property": [
@@ -121,8 +139,14 @@
 					"type": [
 						"object:as:Error"
 					],
-					"format": [ ],
-					"sample": [ ],
+
+					"format": [
+						""
+					],
+					"sample": [
+						""
+					],
+
 					"tag": [
 						"invalid-module-directory-path",
 						"cannot-find-package-json-file",
@@ -136,11 +160,13 @@
 			"description": [
 				"Reformat package JSON file to specific convention."
 			],
+
 			"namespace": "format-package-json-file",
 			"alias": "fpjf",
 			"type": [
 				"shell"
 			],
+
 			"format": [
 				"format-package-json-file",
 				"format-package-json-file --moduleDirectoryPath <moduleDirectoryPath>"
@@ -156,6 +182,7 @@
 					"description": [
 						"Show module version."
 					],
+
 					"namespace": "version",
 					"alias": "v",
 					"property": [
@@ -164,6 +191,7 @@
 					"type": [
 						"boolean"
 					],
+
 					"format": [
 						"--version",
 						"--v"
@@ -178,6 +206,7 @@
 					"description": [
 						"Show help module."
 					],
+
 					"namespace": "help",
 					"alias": "h",
 					"property": [
@@ -188,6 +217,7 @@
 						"boolean",
 						"string"
 					],
+
 					"format": [
 						"--help [helpShellParameter]",
 						"--h [helpShellParameter]"
@@ -201,8 +231,9 @@
 				{
 					"title": "Install Module",
 					"description": [
-						"Install format-package-json-file module to global."
+						"Install module to global."
 					],
+
 					"namespace": "installModule",
 					"alias": "im",
 					"property": [
@@ -211,6 +242,7 @@
 					"type": [
 						"boolean"
 					],
+
 					"format": [
 						"--installModule",
 						"--im"
@@ -223,8 +255,9 @@
 				{
 					"title": "Link Module",
 					"description": [
-						"Link format-package-json-file module to global."
+						"Link module to global."
 					],
+
 					"namespace": "linkModule",
 					"alias": "lm",
 					"property": [
@@ -233,6 +266,7 @@
 					"type": [
 						"boolean"
 					],
+
 					"format": [
 						"--linkModule",
 						"--lm"
@@ -245,8 +279,9 @@
 				{
 					"title": "Uninstall Module",
 					"description": [
-						"Uninstall format-package-json-file module from global."
+						"Uninstall module from global."
 					],
+
 					"namespace": "uninstallModule",
 					"alias": "um",
 					"property": [
@@ -255,6 +290,7 @@
 					"type": [
 						"boolean"
 					],
+
 					"format": [
 						"--uninstallModule",
 						"--um"
@@ -267,8 +303,9 @@
 				{
 					"title": "Module Directory Path",
 					"description": [
-						"Set the file path to JSON file."
+						"Set directory path to package JSON file."
 					],
+
 					"namespace": "moduleDirectoryPath",
 					"alias": "mdp",
 					"property": [
@@ -277,6 +314,7 @@
 					"type": [
 						"string"
 					],
+
 					"format": [
 						"--moduleDirectoryPath <moduleDirectoryPath>",
 						"--mdp <moduleDirectoryPath>"
@@ -289,8 +327,9 @@
 				{
 					"title": "Property List",
 					"description": [
-						"Override default package property sorting procedure."
+						"Override default package property sort procedure."
 					],
+
 					"namespace": "propertyList",
 					"alias": "pl",
 					"property": [
@@ -299,12 +338,13 @@
 					"type": [
 						"object:as:Array:of:string"
 					],
+
 					"format": [
 						"--propertyList <propertyList>",
 						"--pl <propertyList>"
 					],
 					"sample": [
-						"format-package-json-file --moduleDirectoryPath ./ --propertyList name,version,description"
+						"format-package-json-file --moduleDirectoryPath ./ --propertyList name,alias,version"
 					]
 				}
 			]
