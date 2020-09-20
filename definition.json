@@ -272,7 +272,7 @@
 						"--lm"
 					],
 					"sample": [
-						"format-package-json-file --installModule --linkModule"
+						"format-package-json-file --installModule"
 					]
 				},
 

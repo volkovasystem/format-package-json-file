@@ -1052,11 +1052,59 @@
 												.concat(
 													(
 														[
+															"cd",
+
+															`$(npm config get prefix)/lib`
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"&&"
+														]
+													)
+												)
+												.concat(
+													(
+														[
 															"npm link",
 
 															`${ packageData.name }`,
 
+															"2>/dev/null",
+
 															"|| true"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"&&"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"cd -"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"&&"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"npm list --global --depth 0",
+
+															`${ packageData.alias }`
 														]
 													)
 												)
@@ -1066,11 +1114,9 @@
 						===	true
 					);
 
-					resolveShellResult(
-						(
-							installModuleResult
-						)
-					);
+					return	(
+								installModuleResult
+							);
 				}
 				//;	@procedure:install-module;
 
@@ -1109,22 +1155,72 @@
 							(
 								await	executeShellScript(
 											(
-												[
-													"npm link",
+												(
+													[
+														"cd",
 
-													`${ packageData.name }`
-												]
+														`$(npm config get prefix)/lib`
+													]
+												)
+												.concat(
+													(
+														[
+															"&&"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"npm link",
+
+															`${ packageData.name }`,
+
+															"2>/dev/null",
+
+															"|| true"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"&&"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"cd -"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"&&"
+														]
+													)
+												)
+												.concat(
+													(
+														[
+															"npm list --global --depth 0",
+
+															`${ packageData.alias }`
+														]
+													)
+												)
 											)
 										)
 							)
 						===	true
 					);
 
-					resolveShellResult(
-						(
-							linkModuleResult
-						)
-					);
+					return	(
+								linkModuleResult
+							);
 				}
 				//;	@procedure:link-module;
 
